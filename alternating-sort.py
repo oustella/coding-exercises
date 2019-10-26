@@ -1,3 +1,4 @@
+# CodeSignal question
 # take the first element from an array, then the last, then the second, then the last but one in an alternating way.
 # return Boolean whether the elements are sorted
 

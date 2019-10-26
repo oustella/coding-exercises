@@ -1,3 +1,4 @@
+# CodeSignal question
 # eliminate kth number from n numbers until one number is left.
 # return the eliminated strings in order
 
