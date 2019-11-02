@@ -1,46 +1,51 @@
-# not working yet.. 10/22/2019
-# 1.7
-# this solution creates another array instead of doing it in place
-def rotateArray(arr):
-    """
-    values in the first column become the first row
-    [i,j] --> [j, r-i]
-    :param arr: nxn array in the form of list of lists[[1,2,3],[],[]]
-    :return: nxn array rotated 90 degrees clockwise
-    """
-    n = len(arr)
-    r = n - 1
-    # new_arr = [0 * n] * n  # NOTE: this will create unintended behavior where if you change [i][j], the value on the other rows will change too.
-    new_arr = [[0 for r in range(n)] for c in range(n)]
-    for i in range(n):
-        for j in range(n):
-            new_i = j
-            new_j = r - i
-            new_arr[new_i][new_j] = arr[i][j]
-    return new_arr
+# 1.7 Rotate a NxN 2D array clockwise by 90 degrees
 
-def rotateArray(arr):
-    """
-    values in the first column become the first row
-    [i,j] --> [j, r-i]
-    :param arr: nxn array in the form of list of lists[[1,2,3],[],[]]
-    :return: nxn array rotated 90 degrees clockwise
-    """
-    n = len(arr)
-    r = n - 1
-    for i in range(n):
-        for j in range(n):
-            new_i = j
-            new_j = r - i
-            arr[new_i][new_j] = arr[i][j]
-    print(arr)
+
+# solution by CTTI, translated to Python by me
+# rotate the numbers layer by layer
+def rotateImage(a):
+    n = len(a)
+    # layer = 0
+    for layer in range(n//2):  # there are only n//2 layers, if N is odd then the center figure doesn't move
+        first = layer  # defines the beginning of the layer in python indexing, same for row and col
+        last = n-1-layer  # the ending of the layer, same for row and col
+        for i in range(first,last):  # i is the current position, leaving out the last. See CTTI for illustration
+            offset = i - first  # how many positions away from the first. Used for arrays not starting from top of the row/col
+            top = a[first][i]
+            a[first][i] = a[last-offset][first]  # top = left, one pos from last becomes one pos from first
+            a[last-offset][first] = a[last][last-offset]  # left = bottom
+            a[last][last-offset] = a[i][last]  # bottom = right
+            a[i][last] = top
+    return a
+
+
+testArr = [[1,2,3,6], [4,5,'a',9], [7,8,'b',10], [3,6,8,'c']]
+rotateImage(testArr)
+
+
+# solution by CodeSignal user anil_k22
+# rotation is first flip the top and bottom and then swap diagonal values
+def rotateImage(a):
+    a.reverse()
+    # this construct traverse through the lower left diagonal half of a square without touching the diagonal line
+    for i in range(len(a)):
+        for j in range(i):
+            a[i][j], a[j][i] = a[j][i], a[i][j]
+    return a
+
 
 testArr = [[1,2,3], [4,5,6], [7,8,9]]
+rotateImage(testArr)
 
-rotateArray(testArr)
+
+# solution by CodeSignal user lafosse
+# star operator is black magic...
+# the array is first reversed, then unpacked using *, and then zipped by position
+# think of a zipper to imaging how zip() works - stitching up the individual elements across iterables.
+def rotateImage(a):
+    return list(zip(*reversed(a)))
+
+testArr = [[1,2,3], [4,5,6], [7,8,9]]
+rotateImage(testArr)
 
 
-testArr[:]=zip(*testArr[::-1])
-
-x = 1
-~x
