@@ -11,4 +11,4 @@ def removeDuplicates(self, nums: List[int]) -> int:
             j += 1  # move the search pointer ahead 1
         else:  # if the two values are repetitive
             j += 1  # we don't want the value at the search pointer, move it ahead
-    return len(nums[:i+1])
+    return len(nums[:i+1])  # include all numbers where i arrives including the ith position

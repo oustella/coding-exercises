@@ -9,7 +9,7 @@ def rotateImage(a):
     for layer in range(n//2):  # there are only n//2 layers, if N is odd then the center figure doesn't move
         first = layer  # defines the beginning of the layer in python indexing, same for row and col
         last = n-1-layer  # the ending of the layer, same for row and col
-        for i in range(first,last):  # i is the current position, leaving out the last. See CTTI for illustration
+        for i in range(first, last):  # i is the current position, leaving out the last. See CTTI for illustration
             offset = i - first  # how many positions away from the first. Used for arrays not starting from top of the row/col
             top = a[first][i]
             a[first][i] = a[last-offset][first]  # top = left, one pos from last becomes one pos from first

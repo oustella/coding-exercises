@@ -58,4 +58,4 @@ def isCryptSolution(crypt, solution):
     table = str.maketrans(dict(solution))
     t = tuple(s.translate(table) for s in crypt)
     zeroes = any(s[0] == '0' for s in t if len(s) > 1)  # any() returns True if any element of the iterable is true
-    return not zeroes and int(t[0]) + int(t[1]) == int(t[2])  # use and to implicitly test two conditions simultaneously
+    return not zeroes and int(t[0]) + int(t[1]) == int(t[2])  # use `and` to implicitly test two conditions simultaneously

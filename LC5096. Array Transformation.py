@@ -2,9 +2,10 @@
 
 test_arr = [2,1,2,1,1,2,2,1]
 
-def test(arr):
+
+def test(arr):  # testing if a number is greater/smaller than both of its neighbors
     for i, num in enumerate(arr):
-        if 1 <= i <= len(arr) -2:
+        if 1 <= i <= len(arr)-2:
             if num > arr[i-1] and num > arr[i+1]:
                 return False
             elif num < arr[i-1] and num < arr[i+1]:
@@ -24,7 +25,7 @@ def transformArray(arr):
                 new_arr.append(num + 1)
             else:  # if a num is larger than one side and smaller than another side
                 new_arr.append(num)
-        arr = new_arr  # update existing arr with new and put to testing
+        arr = new_arr  # update existing arr with new and put it to testing
     return arr
 
 

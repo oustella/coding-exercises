@@ -1,6 +1,4 @@
-
-# this approach is O(N*N)
-class Solution:
+class Solution:  # this approach is O(N*N)
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         output = []
         len1 = len(nums1)
@@ -27,7 +25,8 @@ def intersect(nums1, nums2):
     sorted1 = sorted(nums1)
     sorted2 = sorted(nums2)
     output = []
-    while i < len(nums1) and j < len(nums2):
+    while i < len(nums1) and j < len(nums2):  # because i and j may not progress in sync, you need both conditions.
+        # whichever pointer reaches the end first means we don't need to go over the rest of the other array
         if sorted1[i] == sorted2[j]:
             output.append(sorted1[i])
             i += 1
@@ -41,6 +40,8 @@ def intersect(nums1, nums2):
 
 # Use a hashmap
 from collections import Counter
+
+
 def intersect(nums1, nums2):
     output = []
     if len(nums1) <= len(nums2):
