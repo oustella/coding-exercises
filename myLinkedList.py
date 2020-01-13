@@ -23,6 +23,8 @@ class LinkedList():
         while current.next:  # you want current to arrive at the last node after the last iteration
             current = current.next
         current.next = newNode
+    # This push method is fine in a class, but as an independent function it will lose the head.
+    # See 'merge_two_sorted_linkedlist.py' for an alternative push that keeps the head.
 
     def printLL(self):
         temp = self.head
@@ -62,56 +64,56 @@ class LinkedList():
         return m.value  # m arrives at N//2 where N is the length of the linked list. m has moved N//2 times from first position.
 
 
-ll = LinkedList()
-ll.insert(1)
-ll.insert(2)
-ll.printLL()
-
-ll.push(2)
-ll.push(3)
-ll.printLL()
-
-ll.reverse()
-ll.push(3)
-ll.printLL()
-
-
-ll.removeKFromList(3)
-ll.printLL()
-
-test = [3, 1, 2, 3, 4, 5]
-def getLL(test):
-    ll2 = LinkedList()
-    for i in test:
-        ll2.insert(i)
-    return ll2
-
-ll2.removeKFromList(3)
-ll2.printLL()
-
-test = [3, 1, 2, 3, 4, 5]
-ll_test = getLL(test)
-ll_test.printLL()
-
-ll_test.getMiddle()
-
-ll_test.reverse()
-ll_test.printLL()
-
-test = [3, 1, 3, 4, 5]
-ll_test = getLL(test)
-ll_test.printLL()
-ll_test.getMiddle()
+# ll = LinkedList()
+# ll.insert(1)
+# ll.insert(2)
+# ll.printLL()
 #
-# # set i to point to middle of list using runner j
-# l = node1
-# i = j = l
+# ll.push(2)
+# ll.push(3)
+# ll.printLL()
 #
-# while j.next != None:
-#     j = j.next.next
-#     if j == None:
-#         break
-#     i = i.next
+# ll.reverse()
+# ll.push(3)
+# ll.printLL()
 #
-# print(i.value)
-# print(j.value)
+#
+# ll.removeKFromList(3)
+# ll.printLL()
+#
+# test = [3, 1, 2, 3, 4, 5]
+# def getLL(test):
+#     ll2 = LinkedList()
+#     for i in test:
+#         ll2.insert(i)
+#     return ll2
+#
+# ll2.removeKFromList(3)
+# ll2.printLL()
+#
+# test = [3, 1, 2, 3, 4, 5]
+# ll_test = getLL(test)
+# ll_test.printLL()
+#
+# ll_test.getMiddle()
+#
+# ll_test.reverse()
+# ll_test.printLL()
+#
+# test = [3, 1, 3, 4, 5]
+# ll_test = getLL(test)
+# ll_test.printLL()
+# ll_test.getMiddle()
+# #
+# # # set i to point to middle of list using runner j
+# # l = node1
+# # i = j = l
+# #
+# # while j.next != None:
+# #     j = j.next.next
+# #     if j == None:
+# #         break
+# #     i = i.next
+# #
+# # print(i.value)
+# # print(j.value)
