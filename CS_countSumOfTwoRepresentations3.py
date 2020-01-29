@@ -28,3 +28,7 @@ def countSumOfTwoRepresentations3(n, l, r):
         if l <= n - intA <= r:
             count += 1
     return count
+
+
+# solution 4
+# max(0, min(x-l, r-x)+(n+1)%2)
