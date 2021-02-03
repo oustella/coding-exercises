@@ -41,7 +41,8 @@ def get_square(i, j, n):
 
 
 testArr = [[1,0,1],[1,1,1],[1,1,1]]
-get_square(0,0,2)
+square = get_square(0,0,2)
+print(square)
 
 for row in square:
     for i in range(len(row)):
