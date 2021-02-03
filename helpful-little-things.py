@@ -79,7 +79,8 @@ def check_all(arr):
 
 
 testArr = [[1,1,1],[1,1,1],[1,1,1]]
-[x for x in row for row in testArr]check_all(testArr)
+[x for x in row for row in testArr]
+check_all(testArr)
 
 testArr = [[1,1,1],[1,0,1],[1,1,1]]
 check_all(testArr)
@@ -124,3 +125,11 @@ new_arr = [[0 for x in range(n)] for x in range(n)]
 new_arr
 new_arr[2][3] = 1
 print(new_arr)
+
+
+# access individual digits from right to left of an integer
+def getDigits(n):
+    while n:  # until the division leaves nother n = 0 
+        digit = n % 10  # integers are base-10
+        n = n // 10
+        print(digit, n)
