@@ -12,6 +12,9 @@ class LinkedList():
     def __init__(self):
         self.head = None
 
+    def getHead(self):
+        return self.head
+
     def insert(self, data):  # insert a new head at the beginning of the linked list
         newNode = ListNode(data)
         newNode.next = self.head  # point to the existing head first and inherit all the links
@@ -20,9 +23,13 @@ class LinkedList():
     def push(self, data):  # add a new node at the end of the linked list
         newNode = ListNode(data)
         current = self.head
-        while current.next:  # you want current to arrive at the last node after the last iteration
-            current = current.next
-        current.next = newNode
+        # if the LinkedList is empty
+        if current:
+            while current.next:  # you want current to arrive at the last node after the last iteration
+                current = current.next
+            current.next = newNode
+        else:
+            self.head = newNode
     # This push method is fine in a class, but as an independent function it will lose the head.
     # See 'merge_two_sorted_linkedlist.py' for an alternative push that keeps the head.
 
@@ -36,6 +43,7 @@ class LinkedList():
     def reverse(self):  # see tutorials at https://www.geeksforgeeks.org/reverse-a-linked-list/
         prev = None
         current = self.head
+        next = None
         while current:
             next = current.next  # save the next element before redirecting the current pointer. Otherwise you will lose it.
             current.next = prev  # point current to the previous element or None for the first element
@@ -63,15 +71,15 @@ class LinkedList():
             n = n.next.next
         return m.value  # m arrives at N//2 where N is the length of the linked list. m has moved N//2 times from first position.
 
+if __name__ == "__main__":
+    ll = LinkedList()
+    # ll.insert(1)
+    # ll.insert(2)
+    # ll.printLL()
 
-# ll = LinkedList()
-# ll.insert(1)
-# ll.insert(2)
-# ll.printLL()
-#
-# ll.push(2)
-# ll.push(3)
-# ll.printLL()
+    ll.push(2)
+    ll.push(3)
+    ll.printLL()
 #
 # ll.reverse()
 # ll.push(3)
