@@ -5,10 +5,12 @@ def mergeSort(arr):
         l_arr = arr[:m]  # left array
         r_arr = arr[m:]  # right array
         mergeSort(l_arr)  # repeat all on the left is sorted and merged
-        mergeSort(r_arr)  
+        mergeSort(r_arr)
+        # merge happens after the array has been broken into individual elements
+        # so that the mereg can happen at every level of the stack  
         merge(arr, l_arr, r_arr)
 
-        # print(r_arr)
+        # print(l_arr, r_arr, arr)  # this line helps understand the recursive process
     return arr
 
 def merge(arr, l_arr, r_arr):  # O(n) time, one pass
@@ -32,9 +34,6 @@ def merge(arr, l_arr, r_arr):  # O(n) time, one pass
         arr[k:] = r_arr[j:]
 
 
-# Quick Sort
-
-
 if __name__ == '__main__':
     test1 = [5,1,6,84,2]
     test2 = [1]
@@ -44,10 +43,7 @@ if __name__ == '__main__':
     mergeSort(test2)
     mergeSort(test3)
 
-
-    # merge([38,27], [2,7])
-
-
+ # other sorting algorithms to implement:
  # bubble sort
  # insertion sort O(n^2)
  # heap sort O(nlogn)
