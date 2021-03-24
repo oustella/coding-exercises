@@ -2,4 +2,4 @@
 ## One line of code at a time
 This repo contains solutions to common coding practice questions heavily commented explaining what the codes do. If I used someone else's solution, the source was acknowledged.
 
-Sources of questions include but are not limited to Leetcode (LC), Hackerrank(HC), Crack the Technical Interview (CTTI, 3rd ed.) and CodeSignal (CS).
+Sources of questions include Leetcode (LC), HackerRank(HC), Crack the Technical Interview (CTTI, 3rd ed.), CodeSignal (CS), etc.
