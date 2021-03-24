@@ -1,7 +1,8 @@
 # Discard because the question is unclear. Hard to evaluate results.
 
 # # CodeSignal question
-# # take the first element from an array, then the last, then the second, then the last but one in an alternating way.
+# # take the first element from an array, then the last, 
+# then the second, then the last but one in an alternating way.
 # # return Boolean whether the elements are sorted
 
 
