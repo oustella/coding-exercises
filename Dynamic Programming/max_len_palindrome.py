@@ -16,33 +16,24 @@ def maxP(s):
     for i in range(n):
         dp[i][i] = True
     # two pointers 
-    # check all the letters up to r
+    # check all the letters up to r - the rightmost letter
     for r in range(n):
         for l in range(r):
             # test two adjacent letters
             if s[l] == s[l+1]:
                 dp[l][l+1] = True
             # test palindroms longer than 2
+            # if dp[l+1][r-1] the inner segment is already a palindrome
+            # then expands outwards two letters
             if dp[l+1][r-1] and s[l] == s[r]:
                 dp[l][r] = True
-                print(l, r, "yay")
+                # print(l, r, "yay")
                 if r - l + 1 > maxL:
                     maxL = r - l + 1
                     start = l
-    print("Longest palindrome subarray is", s[start:start+maxL])
+    # print("Longest palindrome subarray is", s[start:start+maxL])
     return maxL
 
 maxP("aabccb")
 maxP("abbabbabba")
 maxP("aba")
-
-
-
-
-
-
-
-# shape is 4x5. Every single subelement has 5 elements.
-[[float("inf") for i in range(5)] for j in range(4)]
-
-"ab"*2
