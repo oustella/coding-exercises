@@ -125,3 +125,52 @@ if __name__ == "__main__":
 # #
 # # print(i.value)
 # # print(j.value)
+48*47*46*45/(52*51*50*49)
+
+
+import math
+
+48*47*46*45/(math.factorial(52)/math.factorial(13)/math.factorial(39))*3
+
+
+4*3*2/(52*51*50*49
+
+import numpy as np
+arr = [[3,1],[2,2]]
+np.linalg.matrix_power(arr, 5)
+
+
+arr = [[3**0.5, 1], [-1, 3**0.5]]
+temp = np.linalg.matrix_power(arr,6)
+np.matrix.trace(temp)
+
+from scipy.integrate import quad
+def integrand(x):
+    return 1/(1+x**6)
+
+ans, err = quad(integrand, -np.inf,np.inf)
+ans/np.pi
+
+
+(0.1**2 + 0.6**2 + 0.3**2)
+
+11/48*(11/35)*(11/22)*4*3*2/2
+
+
+(1/4+3/1+1/2)
+
+
+(math.factorial(48)/math.factorial(35))/(math.factorial(52)/math.factorial(39))
+
+((math.factorial(48)/math.factorial(12)/math.factorial(36))/(math.factorial(52)/math.factorial(39)/math.factorial(13)))*4
+
+
+from scipy.special import comb
+def prob(N, m, n, k):
+    return comb(m, k)*comb((N-m),(n-k))/comb(N,n)
+
+prob(52, 4, 13, 1)*prob(39,3,13,1)*prob(26,2,13,1)*prob(13,1,13,1)
+
+prob(52,4, 13,0)**4
+
+comb(4,0)

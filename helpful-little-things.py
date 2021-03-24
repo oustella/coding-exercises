@@ -134,3 +134,70 @@ def getDigits(n):
         digit = n % 10  # integers are base-10
         n = n // 10
         print(digit, n)
+
+# python's double ended queue offers O(1) to add/remove an element from the beginning/end queue
+from collections import deque
+a = deque([1,2,3,6,7])
+a.append(8)
+a.appendleft(5)
+a.pop()
+a.popleft()
+print(a)
+
+
+# Numeric 0's property
+0 == True  # return False
+0 == None  # return False
+
+
+# slicing a string
+# string[start:stop:step]
+a = "abcdef"
+a[::-2]
+a[1:5:1]
+
+
+# the exit point of a while loop
+# always becomes the first value over the threshold
+n = 5
+while n <=10:
+    n += 1
+    print(n, end=" ")
+
+while n>=0:
+    n -= 1
+    print(n, end=" ")
+
+# the numeric 0 (integer of float) is False,  the integer "0" is True.
+if 0.0:
+    print('0 is true.')
+else:
+    print('0 is False.')
+
+if "0":
+    print('"0" is true.')
+else:
+    print('"0 is False.')
+
+
+# this can be reduced to one line
+foo = 0
+if bar > foo:
+    foo = bar
+# one line
+foo = max(foo, bar)
+
+
+
+# sort dictionary
+arr = [1,2,3,5,6,6,7,7,9,5]
+from collections import Counter
+most_common = Counter(arr).most_common()
+# Note the `.most_common()` method already sorts by the most frequent and then by the smallest value
+
+
+
+min(float("inf"), 1)
+
+if float("inf"):
+    print("inf is true.")

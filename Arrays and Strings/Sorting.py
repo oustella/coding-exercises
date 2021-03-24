@@ -48,4 +48,11 @@ if __name__ == '__main__':
     # merge([38,27], [2,7])
 
 
- 
+ # bubble sort
+ # insertion sort O(n^2)
+ # heap sort O(nlogn)
+
+ # selection sort O(n^2)
+ # The selection sort algorithm sorts an array by repeatedly finding the minimum element 
+ # (considering ascending order) from unsorted part and putting it at the beginning. 
+ # The algorithm maintains two subarrays in a given array.
