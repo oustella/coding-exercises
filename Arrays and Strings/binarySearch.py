@@ -1,6 +1,7 @@
 # binary search
 # good for sorted array with O(log(n)) time complexity
-# Given a sorted array and a target value, find the index of the target
+# Given a sorted array and a target value, find the index of the target t
+
 # e.g. {1,2}, t = 1, returns 0
 # 0. li = 0, ri = 1
 # 1. mid = (0+1)//2 = 0, arr[0] == 1, return 1
@@ -23,9 +24,9 @@
 
 
 def binarySearch(arr, li, ri, t):
-    # as long as the right index is greater than the left index
-    mid = (li + ri)//2
-    if ri >= li:
+    # as long as the range between li and ri is an effective one
+    # when li==ri, it's essentially one element
+    if li <= ri:
         mid = (li+ri)//2
         # print(mid)
         if t == arr[mid]:
@@ -37,11 +38,12 @@ def binarySearch(arr, li, ri, t):
     else:
         return -1
 
-binarySearch([1,2], 0, 2, 3)
+test = [1,2]
+binarySearch(test, 0, len(test)-1, 1)
 
 
 ###################################
-# find element in a sorted and rotated array
+# find element in a sorted but rotated array
 # e.g. given arr={5, 6, 7, 8, 9, 10, 1, 2, 3}, target=9; return 4
 
 def pivotBinarySearch(arr, n, t):
@@ -55,6 +57,9 @@ def pivotBinarySearch(arr, n, t):
 
 # pivot is i where arr[i]>arr[i+1]
 def findPivot(arr, start, end):
+    '''
+    start and end are the indices of the two ends of the subarray.
+    '''
     # empty array
     if start > end:
         return None
