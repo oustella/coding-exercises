@@ -1,3 +1,5 @@
+# Given an array of stock close prices
+# return the max profit from making one trade throughout the trading period
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 def maxProfit(prices):
     # if only one day price, then cannot trade, return 0
@@ -17,6 +19,7 @@ def maxProfit(prices):
 # strategy is to record the min price as you traverse through the array
 
 # extension: when you can trade more than once to achieve max profits
+# source: https://www.geeksforgeeks.org/stock-buy-sell/
 def maxProfit_multi(prices):
     # if only one day price, then cannot trade, return 0
     if len(prices) == 1:
