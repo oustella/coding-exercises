@@ -9,8 +9,8 @@ class Solution:
         if len(s1) > len(s2):
             return False
         s1map = collections.Counter(s1)
-        l = len(s1)  # lenght of sliding window
-        for i in range(len(s2)-l+1):
+        l = len(s1)  # length of sliding window
+        for i in range(len(s2)-l+1):  # i is the pointer of the sliding window start
             s2map = collections.Counter(s2[i:i+l])  # note this is not a "real" sliding window [1]
             if s1map == s2map:
                 return True
