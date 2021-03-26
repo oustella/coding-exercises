@@ -1,3 +1,5 @@
+# Under-construction as of 3/25/2021
+
 # Given a string and a vocab dictionary, output all posssible combinations of substrings from the dictionary
 # input: s = "abcde", vocab = ["ab", "cd", "e", "cde"]
 # output: [["ab", "cd", "e"], ["ab", "cde"]]
@@ -11,17 +13,23 @@
 
 def wordSplit(s, vocab):
     results = []
-    results.append(back_track(s, vocab, []))
+    results.append(back_track(s, vocab))
     return results
 
-def back_track(s, vocab, current_solution):
+# current_solution = []
+def back_track(s, vocab):
+    current_solution = []
     if not s: 
         return current_solution
     for i in range(1, len(s)+1):
         if s[:i] in vocab:
             current_solution.append(s[:i])
-            return back_track(s[i:], vocab, current_solution)
+            current_solution.extend(back_track(s[i:], vocab))
+    return current_solution
+back_track(s,vocab)
 
+
+current_solution
 wordSplit(s, vocab)
 if __name__=="__main__":
     s = "abcde"

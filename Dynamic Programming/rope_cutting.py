@@ -12,7 +12,7 @@
 # let k be i, and n-k be j, 1 <= j < i < n
 
 def maxProduct(n):
-    dp = [0] * (n+1)  # for i = 0 to n, there are n+1 numbers
+    dp = [0 for i in range(n+1)]  # for i = 0 to n, there are n+1 numbers
     # dp[1] = 1
     # the overall length of the remaining rope
     for i in range(2, n+1):  # starting from 2, because we already have taken care of dp[1]
