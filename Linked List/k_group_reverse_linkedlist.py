@@ -2,11 +2,19 @@
 # Similar to pair_reverse_linkedlist except pair (k=2) becomes group (k=n)
 # input 1->2->7->9->3, k = 3
 # output 7->2->1->9->3
+# step 1, cur = 1, find subhead = 7, nexseg = 9, and the subseg becomes 7->2->1
+# step 2, connects cur to the remaining list, the 7->2->1->9->3
+# step 3, advance prev to 1, and cur to 9
+# step 4, detects that the remaing elements are fewer than k by nexseg becomes none
+# therefore, don't do the reverse and subhead = cur = 9
+# step 5, connects prev to subhead
+# step 6, cur becomes None, end the while loop
 
 # Strategy
-# Write a helper function to reverse k nodes
-# See pair_reverse_linkedlist
-# Note how to guarantee the remaining nodes still have k left during traversal
+# use pointers to keep track of: 
+# 1. reversed new head, 
+# 2. old head becomes the new tail, 
+# 3. and the head of the next segment
 
 def k_reverse(head, k):
     # if the LL has less than k nodes, then `findKNodes` will return None
@@ -15,17 +23,15 @@ def k_reverse(head, k):
     
     cur = head
     prev = None
-    # nex is the beginning of the next group
-    nex = None
-    # print(nex.value)
 
     # the traversal continues if we can find the beginning of a next subgroup (n=k)
-    # at the end, cur becomes None 
+    # when remaining segment has fewer than k elements, cur becomes None 
     while cur:
-        nex = findKNodes(cur, k).next
-        subhead = helper(cur, k)
-        # print(subhead.value)
-
+        # print(cur.value)
+        # subhead is the new head of the reversed subsegment
+        # nexseg is the head of the remaining segment
+        subhead, nexseg = helper(cur, k)
+        
         # link the new subhead to the previous
         if prev is None:
             head = subhead
@@ -33,9 +39,14 @@ def k_reverse(head, k):
             prev.next = subhead
 
         # connect the remaining nodes to the end of the reversed
-        cur.next = nex
-        # memorize cur (end of the reversed) to be previous
-        prev, cur = cur, nex
+        # here cur is still pointing to the original first element of the subsegment, 
+        # which becomes the end of the newly reversed subsegment
+        if nexseg:
+            cur.next = nexseg
+        
+        # advance prev to end of the newly reversed subsegment
+        # advance cur to the beginning of the new segment
+        prev, cur = cur, nexseg
     
     return head
 
@@ -56,34 +67,33 @@ def helper(head, k):
     nex = None
     prev = None
     count = 0
+    nexseg = findKNodes(cur, k).next
     # within k nodes there are k links to reverse including the head to prev group
-    while count < k:
-        nex = cur.next
-        cur.next = prev
-        prev, cur = cur, nex
-        count += 1
-    # prev is the end node of the k group, i.e. the new head of the reversed
-    return prev
+    if nexseg:
+        while count < k:
+            nex = cur.next
+            cur.next = prev
+            prev, cur = cur, nex
+            count += 1
+        # prev is the end node of the k group, i.e. the new head of the reversed
+        return prev, nexseg
+    else:
+        return cur, nexseg
 
 
-if __name__ == "__main__":
-    from myLinkedList import *
-    def viewLL(head):
-        while head.next:
-            print(head.value, "->", end=" ")
-            head = head.next
-        print(head.value)
 
-    # for k in range(1,8):
-    #     print("k=", k)
-    #     test = LinkedList()
-    #     for i in [1,4,2,7,5,3,6]:
-    #         test.push(i)
-    #     new_head = k_reverse(test.head, k)
-    #     viewLL(new_head)
+from myLinkedList import *
+def viewLL(head):
+    while head.next:
+        print(head.value, "->", end=" ")
+        head = head.next
+    print(head.value)
 
 
-    test = LinkedList()
-    for i in [1,4,2,7,5,3,6]:
-        test.push(i)
-    viewLL(k_reverse(test.head,7))
+test = LinkedList()
+for i in [1,4,2,7,5,3,6]:
+    test.push(i)
+viewLL(k_reverse(test.getHead(),3))
+
+
+
