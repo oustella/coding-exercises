@@ -11,7 +11,6 @@ def isPalindrome(head: ListNode) -> bool:
         fp = fp.next.next
         sp = sp.next
     mid = sp
-    print('mid node', mid.value)
     # the head of the reversed left array is the node one before the mid node
     l_head = reverseLL(head, mid)
     print('new left head', l_head.value)
@@ -41,12 +40,12 @@ def reverseLL(head, tail):
     else:
         prev = None
         cur = head
-        next = None
+        nex = None
         while cur != tail:
-            next = cur.next
+            nex = cur.next
             # reverse the link
             cur.next = prev
-            prev, cur = cur, next
+            prev, cur = cur, nex
         return prev
 
 
