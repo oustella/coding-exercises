@@ -16,3 +16,10 @@ def is_well_formed(string):
         elif not unmatched_brackets or pairings[unmatched_brackets.pop()] != char:
             return False
     return len(unmatched_brackets) == 0
+
+test = "([])"
+test1 = "([)"
+test2 = "()["
+print(test, is_well_formed(test))
+print(test1, is_well_formed(test1))
+print(test2, is_well_formed(test2))
