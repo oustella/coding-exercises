@@ -33,15 +33,42 @@ def merge(arr, l_arr, r_arr):  # O(n) time, one pass
     else:  # it's either the left pointer arrives first or the right. They cannot arrive at the same time
         arr[k:] = r_arr[j:]
 
+########## simplified version ########
+def merge_sort(nums):
+    # the base case, the stopping condition
+    if len(nums) <= 1:
+        return nums
+    mid = len(nums) // 2
+    left_sorted = merge_sort(nums[:mid])
+    right_sorted = merge_sort(nums[mid:])
+    return merge(left_sorted, right_sorted)
+
+def merge(arr1, arr2):
+    if len(arr1) == 0:
+        return arr2
+    if len(arr2) == 0:
+        return arr1
+    if arr1[0] <= arr2[0]:
+        return [arr1[0]] + merge(arr1[1:], arr2)
+    else:
+        return [arr2[0]] + merge(arr1, arr2[1:])
+
 
 if __name__ == '__main__':
     test1 = [5,1,6,84,2]
     test2 = [1]
     test3 = [1,6,4,6,3,6]
 
-    mergeSort(test1)
-    mergeSort(test2)
-    mergeSort(test3)
+    # mergeSort(test1)
+    # mergeSort(test2)
+    # mergeSort(test3)
+
+    merge_sort(test1)
+    merge_sort(test2)
+    merge_sort(test3)
+
+
+
 
  # other sorting algorithms to implement:
  # bubble sort
@@ -52,3 +79,4 @@ if __name__ == '__main__':
  # The selection sort algorithm sorts an array by repeatedly finding the minimum element 
  # (considering ascending order) from unsorted part and putting it at the beginning. 
  # The algorithm maintains two subarrays in a given array.
+ 

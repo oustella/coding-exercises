@@ -1,3 +1,4 @@
+from typing import List
 # binary search
 # good for sorted array with O(log(n)) time complexity
 # Given a sorted array and a target value, find the index of the target t
@@ -41,6 +42,43 @@ def binarySearch(arr, li, ri, t):
 test = [1,2]
 binarySearch(test, 0, len(test)-1, 1)
 
+############ simiplified ##########
+def binary_search(arr: List[int], target: int) -> int:
+    def helper(l, r):
+        if l > r:
+            return -1
+        mid = (l+r)//2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            l = mid + 1
+        else:
+            r = mid - 1
+        return helper(l,r)
+    return helper(0, len(arr)-1)  # 1
+
+binary_search([1,2,3],4)
+
+# 1, the initial rindex is the rightmost an index can go
+# it needs to be the last VALID index
+
+############ simiplified, without recursion ##########
+def binary_search(arr: List[int], target: int) -> int:
+    l = 0
+    r = len(arr)-1
+    while l <= r:
+        mid = (l+r)//2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1
+    
+
+binary_search([1,2,3],4)
+
 
 ###################################
 # find element in a sorted but rotated array
@@ -78,7 +116,7 @@ def findPivot(arr, start, end):
     if arr[mid] > arr[mid+1]:
         return mid
     # when mid-1 is the pivot
-    if arr[mid-1]> arr[mid]:
+    if arr[mid-1] > arr[mid]:
         return mid-1
     # when pivot is to the right of mid, everything on the left is smaller than pivot
     if arr[start] < arr[mid]:
@@ -87,9 +125,26 @@ def findPivot(arr, start, end):
     return findPivot(arr, start, mid-1)
     
 t1 = [1,2,5,6,10,11]
-t1 = [10,11,1,2,5,6]
+t2 = [10,11,1,2,5,6]
 # t1 = []
 findPivot(t1,0,len(t1)-1)
 pivotBinarySearch(t1, len(t1),1)
 
 
+####### alt approach #######
+
+def find_min_rotated(arr: List[int]) -> int:
+    l = 0
+    r = len(arr)-1
+    last = arr[-1]
+    bound = -1
+    while l <= r:
+        mid = (l+r)//2
+        if arr[mid] <= last:
+            bound = mid
+            r = mid-1
+        else:
+            l = mid+1
+    return bound
+
+find_min_rotated(t1)
