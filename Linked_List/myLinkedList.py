@@ -80,12 +80,3 @@ class LinkedList():
             n = n.next.next
         return m.value  # m arrives at N//2 where N is the length of the linked list. m has moved N//2 times from first position.
 
-# if __name__ == "__main__":
-#     ll = LinkedList()
-#     # ll.insert(1)
-#     # ll.insert(2)
-#     # ll.printLL()
-
-#     ll.push(2)
-#     ll.push(3)
-#     ll.printLL()
