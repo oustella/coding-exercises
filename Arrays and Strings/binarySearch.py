@@ -1,6 +1,6 @@
 from typing import List
 # binary search
-# good for sorted array with O(log(n)) time complexity
+# good for *sorted* array with O(log(n)) time complexity
 # Given a sorted array and a target value, find the index of the target t
 
 # e.g. {1,2}, t = 1, returns 0
@@ -77,7 +77,7 @@ def binary_search(arr: List[int], target: int) -> int:
     return -1
     
 
-binary_search([1,2,3],4)
+binary_search([1,2,3,4],4)
 
 
 ###################################
@@ -127,7 +127,7 @@ def findPivot(arr, start, end):
 t1 = [1,2,5,6,10,11]
 t2 = [10,11,1,2,5,6]
 # t1 = []
-findPivot(t1,0,len(t1)-1)
+findPivot(t2,0,len(t2)-1)
 pivotBinarySearch(t1, len(t1),1)
 
 
@@ -147,4 +147,4 @@ def find_min_rotated(arr: List[int]) -> int:
             l = mid+1
     return bound
 
-find_min_rotated(t1)
+find_min_rotated(t2)
