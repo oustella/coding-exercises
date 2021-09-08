@@ -1,5 +1,5 @@
 # partition is the process of slicing a string to different substrings
-# e.g. "abc" can be partitioned into [["a", "bc"], ["ab", "c"], ["abc"]]
+# e.g. "abc" can be partitioned into [["a", "b", "c"], ["a", "bc"], ["ab", "c"], ["abc"]]
 def partition(s):
     ans = []
     def dfs(start, path):
