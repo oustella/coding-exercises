@@ -33,6 +33,6 @@ def is_valid_tree(n: int, edges: List[List[int]]) -> bool:
     return all(visited)
 
 edges = [[0,1],[0,2],[0,3],[1,4]]
-is_valid_tree(5, edges)
+is_valid_tree(5, edges)  # True
 edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]
-is_valid_tree(5, edges)
+is_valid_tree(5, edges)  # False
