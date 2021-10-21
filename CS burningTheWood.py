@@ -1,5 +1,31 @@
 # https://app.codesignal.com/challenge/ns25kwheaFf9WLZ45
 
+# bfs solution
+# no sorting needed
+from collections import defaultdict
+from collections import deque
+def burningTheWood(n, wmap, start, k):
+    if k == 0 or len(wmap) == 0:
+        return [start]
+    graph = defaultdict(list)
+    for pair in wmap:
+        graph[pair[0]].append(pair[1])
+        graph[pair[1]].append(pair[0])
+    bfs = deque([start])
+    visited = [False for _ in range(n)]
+    visited[start] = True
+    while bfs and k > 0: 
+        for _ in range(len(bfs)):
+            node = bfs.popleft()
+            if node in graph:
+                for child in graph[node]:
+                    if not visited[child]:
+                        bfs.append(child)
+                        visited[child] = True  # move visited toggle here to accommodate the k hour requirement
+        k -= 1
+    res = [i for i,val in enumerate(visited) if val]
+    return res
+
 
 from collections import defaultdict
 def burningTheWood(n, wmap, start, k):
@@ -27,12 +53,3 @@ def burningTheWood(n, wmap, start, k):
             return sorted(list(set(all_burnt)))
 
 
-# Use solution by itsoes
-s = [start]
-while k:
-  k -= 1
-  q={*s}  # getting unique set of numbers
-  for y in wmap:
-    if q&{*y}:  # finding intersection between the burnt numbers and the map
-      s += y
-return sorted({*s})
