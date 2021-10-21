@@ -34,7 +34,7 @@ def num_connected_components(n: int, graph: List[List[int]]) -> int:
     return count
 
 edges = [[0,1],[0,2],[1,2],[3,4]]
-num_connected_components(5, edges)
+num_connected_components(5, edges)  # 2
 
 edges = [[0,1],[1,2],[2,3],[3,4]]
-num_connected_components(5, edges)
+num_connected_components(5, edges)  # 1

@@ -6,9 +6,9 @@ from typing import List
 
 def top_sort(n: int, graph: dict) -> List:
     sorted_nodes, visited = deque(), [False for _ in range(n)]
-    for i in range(n):
-        if i in graph:
-            dfs(i, sorted_nodes, visited, graph)
+    for node in graph:
+        if not visited[node]:
+            dfs(node, sorted_nodes, visited, graph)
     return list(sorted_nodes)
 
 def dfs(node, sorted_nodes, visited, graph):
