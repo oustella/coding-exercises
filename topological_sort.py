@@ -24,3 +24,10 @@ test = {0:[1,2], 1:[2,5], 2: [3], 5: [3,4], 6: [1,5]}
 n = 7
 print(top_sort(n, test))
                     
+test = {0: [1], 1: [0]}
+n = 2
+print(top_sort(n, test))
+
+test = {1: [3], 2: [3], 4: [1,2]}
+n = 5
+print(top_sort(n, test))
