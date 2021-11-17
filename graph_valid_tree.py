@@ -36,3 +36,7 @@ edges = [[0,1],[0,2],[0,3],[1,4]]
 is_valid_tree(5, edges)  # True
 edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]
 is_valid_tree(5, edges)  # False
+edges = [[0,1],[1,0]]
+print(is_valid_tree(2, edges))
+edges = [[1,4],[2,4],[3,1],[3,2]]
+print(is_valid_tree(5, edges))
