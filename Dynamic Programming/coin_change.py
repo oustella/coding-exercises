@@ -8,7 +8,7 @@
 # [4] need to try all the coin denominations to take out of the current amount i ** this is the most important step to implementation IMHO
 # if current amount i - coint >= 0 it's a valid step
 # [5] dp[i] is the min number coins that add up to amount i
-# the recurrent relation is: the min number coins to add to amount i is either the coins needs to accumulate to $i - $coin plus 1 (the coin),
+# the recurrent relation is: the min number coins to add to amount i is either the coins needed to accumulate to $i - $coin plus 1 (the coin),
 # or an existing solution that add to $i, whichever is smaller
 # [6] if dp[target] still has +inf, it means no valid solution is available
 
