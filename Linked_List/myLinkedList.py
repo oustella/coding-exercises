@@ -62,11 +62,12 @@ class LinkedList():
 
     def removeKFromList(self, k): # remove nodes if value equal to k
         current = self.head
-        while current:  # you want to go through the entire linked list so the last element needs to be examined
+        while current:  # you want to go through the entire linked list so the last element can be examined
             if current.value == k:  # if the head value is k, assign a new head to the next element
                 self.head = current.next
                 current = current.next  # move along the pointer
-            elif current.next and current.next.value == k:  # if the next value is k, skip that node
+            # check the next value, not the current value, so that we don't lose the 'prev' relative to the node to be removed
+            elif current.next and current.next.value == k:  
                 current.next = current.next.next
                 current = current.next
             else:
@@ -75,8 +76,10 @@ class LinkedList():
     def getMiddle(self):  # return the start of the second half of the linked list.
         m = self.head  # m moves one node at a time
         n = self.head  # n moves two nodes at a time. By the time n reaches the end, m is half way through.
+        # since n moves two nodes at a time via .next.next, need to make sure n.next is valid
         while n and n.next:
             m = m.next
             n = n.next.next
-        return m.value  # m arrives at N//2 where N is the length of the linked list. m has moved N//2 times from first position.
+        return m.value  # m arrives at N//2 where N is the length of the linked list. Index at N//2 is always the beginning of the second half of an array.
+
 
