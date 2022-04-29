@@ -6,8 +6,10 @@ def partition(s):
         if start == len(s):
             ans.append(path[:])
             return
-
+        # i is the end point of a substring
+        # goes to len(s)+1 so the prefix ends up at the last valid index of the string
         for i in range(start+1, len(s)+1):
+            print(start, i)
             prefix = s[start: i]
             path.append(prefix)
             dfs(i, path)
@@ -15,6 +17,8 @@ def partition(s):
 
     dfs(0, [])
     return ans
+
+partition("abc")
 
 # simplified backtracking code
 def partition(s):
@@ -37,7 +41,6 @@ partition("abc")
 
 # partition() is concerned with finding all possible partitions
 # when the substring can only be in a given list, the code be further simplied.
-
 def partition2(s, allowed):
     ans = []
     def dfs(i, path):
@@ -51,3 +54,28 @@ def partition2(s, allowed):
     return ans
 
 partition2("helloworld", ["hello", "world", "he", "llo", "w"])
+
+# # print out the backtracking process
+# under construction
+# def partition(s):
+#     ans = []
+#     def dfs(start, path, level):
+#         if start == len(s):
+#             ans.append(path[:])
+#             return
+#         # i is the end point of a substring
+#         # goes to len(s)+1 so the prefix ends up at the last valid index of the string
+#         for i in range(start+1, len(s)+1):
+#             prefix = s[start: i]
+#             path.append(prefix)
+#             level.append("  ")
+#             dfs(i, path, level)
+#             path.pop()
+#             level.pop()
+#             print("".join(level), start, i, path)
+
+
+#     dfs(0, [], [])
+#     return ans
+
+# partition("abc")

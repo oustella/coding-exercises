@@ -66,6 +66,7 @@ binary_search1([1,2,3],4)
 # Note this approach only returns the index of the input array. 
 # If binary search is used as part of an algorithm that needs to search different parts of a mother array
 # this approach would not output the correct index of the mother array
+# (but you may be able to convert a relative index to the original by facotring in the pivot)
 # See example below for when binary search a rotated array
 def binary_search2(arr: List[int], target: int) -> int:
     l = 0
@@ -86,59 +87,31 @@ binary_search2([1,2,3,4],4)
 ###################################
 # find element in a sorted but rotated array
 # e.g. given arr={5, 6, 7, 8, 9, 10, 1, 2, 3}, target=9; return 4
-
 # pivot is i where arr[i]>arr[i+1]
-# This approach is not recommended due to multiple scenarios
-# Use the alternative approach find_pivot1
-def find_pivot(arr, start, end):
-    '''
-    start and end are the indices of the two ends of the subarray.
-    '''
-    # empty array
-    if start > end:
-        return None
-    # single element array
-    if start == end:
-        return start
-    # if the first element of the array is less than the last,
-    # then the array is not rotated
-    if arr[0] < arr[end]:
-        return -1
-    
-    mid = (start+end)//2
-    # these two scenarios take care of comparing mid to its neighbor
-    # as the recursive is not going to include mid
-    # when mid is the pivot
-    if arr[mid] > arr[mid+1]:
-        return mid
-    # when mid-1 is the pivot
-    if arr[mid-1] > arr[mid]:
-        return mid-1
-    # when pivot is to the right of mid, everything on the left is smaller than pivot
-    if arr[start] < arr[mid]:
-        return find_pivot(arr, mid+1, end)
-    # when pivot is to the left of mid, 
-    return find_pivot(arr, start, mid-1)
-    
-t1 = [1,2,5,6,10,11]
-t2 = [10,11,1,2,5,6]
-# t1 = []
-find_pivot(t2,0,len(t2)-1)
+# step 1 find the pivot
+# step 2 do binar search on both sides
 
-
-
-####### alt approach findPivot #######
-# the key is to realize that the arr can be translated into
+# the key to find the pivot is to realize that the arr can be translated into
 # a series of continuous False and continue True values
 # e.g. [4,1,2,3] -> [False, True, True, True] if we test arr[i] <= arr[-1]
 # Then the problem is to find the first True index
-def find_pivot1(arr: List[int]) -> int:
+#%%
+from typing import List
+
+def find_pivot(arr: List[int]) -> int:
+    """
+    Given a sorted but rortated array, 
+    return index i where arr[i-1] > arr[i]
+    """
     l = 0
     r = len(arr)-1
     last = arr[-1]
+    # store the current possible boundary
     bound = -1
     while l <= r:
         mid = (l+r)//2
+        # the mid element is smaller than the last element
+        # the pivot is on the left to the mid element
         if arr[mid] <= last:
             bound = mid
             r = mid-1
@@ -146,8 +119,12 @@ def find_pivot1(arr: List[int]) -> int:
             l = mid+1
     return bound
 
+test = [8, 9, 10, 1, 2, 3]
+print(find_pivot(test))
+
+#%%
 def pivot_binary_search(arr, target):
-    pivot = find_pivot1(arr)
+    pivot = find_pivot(arr)
 
     if arr[pivot] == target:
         return pivot
@@ -159,3 +136,4 @@ def pivot_binary_search(arr, target):
 if __name__ == "__main__":
     test = [5,6,1,2,3,4]
     print(pivot_binary_search(test, 2))
+# %%

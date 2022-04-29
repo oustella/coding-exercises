@@ -6,7 +6,7 @@
 # Strategy: sum(0,j) - sum(0,i) = sum(i+1, j) (inclusive)
 # sum(0,i) is called a prefix_sum
 # When both sum(0,j) and sum(0,i) emerges, and their difference is the target
-# We know the target's starting and ending indices
+# We know the target's starting and ending indices that are i+1, j
 #%%
 from typing import List
 def subarray_sum(arr: List, target: int) -> List:
@@ -21,18 +21,17 @@ def subarray_sum(arr: List, target: int) -> List:
         print(prefix_sum)
 
 #[1] prefix_sum[complement_val]+1 corresponds to the i+1 
-# then -1 since the prefix_sum keeps track of everyone's index +1
+# then minus 1 since the prefix_sum keeps track of everyone's index +1
 # i+1 is because the question requires exclusive ending index
 # while i is in the original array index, not to be confused with
 # the index+1 in the prefix_sum lookup
 
 #[2] starts the lookup with sum=0 when no element in the array is included
 # this is for when the entire array adds up to the target
+
 #%%
 test = [1,2,3,14,6]
 target = 5
 print(subarray_sum(test, target))
 
 
-
-# %%
