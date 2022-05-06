@@ -3,6 +3,8 @@
 # output: 4
 # also print the longest palindrome subarray
 
+# This method doesn't work for "cbbd"
+#%%
 def maxP(s):
     n = len(s)
     # initiate an array with len(s) row and len(s) column
@@ -17,8 +19,10 @@ def maxP(s):
         dp[i][i] = True
     # two pointers 
     # check all the letters up to r - the rightmost letter
+    i = 0
     for r in range(n):
         for l in range(r):
+            i+=1
             # test two adjacent letters
             if s[l] == s[l+1]:
                 dp[l][l+1] = True
@@ -32,8 +36,16 @@ def maxP(s):
                     maxL = r - l + 1
                     start = l
     # print("Longest palindrome subarray is", s[start:start+maxL])
+    print(i)
     return maxL
 
-maxP("aabccb")
-maxP("abbabbabba")
-maxP("aba")
+#%%
+print("max length", maxP("aabccb"))
+
+#%%
+print(maxP("abbabbabba"))
+print(maxP("aba"))
+
+# %%
+print(maxP("cbbd"))
+# %%

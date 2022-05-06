@@ -11,7 +11,7 @@ def top_sort(n: int, graph: dict) -> List:
             dfs(node, sorted_nodes, visited, graph)
     return list(sorted_nodes)
 
-def dfs(node, sorted_nodes, visited, graph):
+def dfs(node, sorted_nodes:deque, visited, graph):
     visited[node] = True
     if node in graph:
         for child in graph[node]:
